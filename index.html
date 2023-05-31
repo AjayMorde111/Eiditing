@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <form action="#">
+         <label for="">Name</label>
+        <input type="text" id="input" required>
+        <label for="">Email</label>
+        <input type="email" id="Email" required>
+        <label for="">Password</label>
+        <input type="password" id="pass" required>  
+        <button id="btn">Submit</button>
+    </form>    
+    <script>
+  let btn = document.getElementById('btn');
+btn.addEventListener('click', function(event) {
+  event.preventDefault();
+  let a = document.getElementById('input').value;
+  let b = document.getElementById('Email').value;
+  let c = document.getElementById('pass').value;
+  let d = document.createElement('div');
+  d.setAttribute('class', 'info');
+  d.innerHTML = `<p id="name"><strong>Name:</strong><span>${a}</span></p>
+                 <p id="Email1"><strong>Email:</strong><span>${b}</span></p>
+                 <button id="deleteBtn">Delete</button>
+                 <button id="editBtn">Edit</button>`;
+  document.body.appendChild(d);
+
+  let editBtn = document.getElementById('editBtn');
+  editBtn.addEventListener('click', function() {
+    let nameSpan = document.querySelector('#name span');
+    let emailSpan = document.querySelector('#Email1 span');
+    
+    let nameInput = document.createElement('input');
+    nameInput.value = nameSpan.textContent;
+    
+    let emailInput = document.createElement('input');
+    emailInput.value = emailSpan.textContent;
+    
+    nameSpan.replaceWith(nameInput);
+    emailSpan.replaceWith(emailInput);
+
+    editBtn.disabled = true; // Disable the Edit button during editing
+
+   
+  });
+
+  let deleteBtn = document.getElementById('deleteBtn');
+  deleteBtn.addEventListener('click', function() {
+    d.remove(); // Remove the parent element
+  });
+});
+
+        
+
+
+
+        
+    </script>
+    
+
+        
+
+
+
+    
+</body>
+</html>
